@@ -1,0 +1,8 @@
+/test_db.mv.db
+/.classpath
+/.factorypath
+/.project
+/jdbchelper.iml
+/target/
+/.settings/
+/.idea/
