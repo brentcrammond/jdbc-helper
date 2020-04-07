@@ -1,14 +1,13 @@
 /*
  * Copyright 2020 Anameg Consulting Ltd
  */
-package nz.h4t.jdbchelper;
+package nz.anameg.jdbchelper;
 
 import org.h2.jdbcx.JdbcDataSource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.sql.SQLException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,7 +20,7 @@ class JDBCHelperTest {
     JdbcDataSource ds;
 
     @BeforeEach
-    void setUp() throws SQLException {
+    void setUp() {
         ds = new JdbcDataSource();
         ds.setUrl("jdbc:h2:./test_db");
         new JDBCHelper(ds).update("CREATE TABLE IF NOT EXISTS names (id BIGINT NOT NULL PRIMARY KEY, name VARCHAR(20), seq INT)");
@@ -34,7 +33,7 @@ class JDBCHelperTest {
     }
 
     @Test
-    void query() throws SQLException {
+    void query() {
         var lst = new JDBCHelper(ds).query("SELECT * FROM names ORDER by id",
                 (rs, idx) -> Name.builder().id(rs.getLong("id")).name(rs.getString("name")).seq(rs.getInt("seq")).build());
         for (int i = 0; i < 5; i++) {
@@ -46,7 +45,7 @@ class JDBCHelperTest {
     }
 
     @Test
-    void queryObject() throws SQLException {
+    void queryObject() {
         var opt = new JDBCHelper(ds).queryObject("SELECT * FROM names WHERE id = 3",
                 (rs, idx) -> Name.builder().id(rs.getLong("id")).name(rs.getString("name")).seq(rs.getInt("seq")).build());
         assertTrue(opt.isPresent());
@@ -56,7 +55,7 @@ class JDBCHelperTest {
     }
 
     @Test
-    void execute() throws SQLException {
+    void execute() {
         var done = new AtomicBoolean(false);
         new JDBCHelper(ds).execute("SELECT * FROM names WHERE id = 4", (rs) -> {
             assertEquals(4, rs.getLong("id"));
@@ -68,7 +67,7 @@ class JDBCHelperTest {
     }
 
     @Test
-    void update() throws SQLException {
+    void update() {
         var done = new AtomicBoolean(false);
         new JDBCHelper(ds).update("UPDATE names SET seq = 1000 WHERE id = 5");
         new JDBCHelper(ds).queryObject("SELECT * FROM names WHERE id = 5",

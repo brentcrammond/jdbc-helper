@@ -1,7 +1,7 @@
 /*
  * Copyright 2020 Anameg Consulting Ltd
  */
-package nz.h4t.jdbchelper;
+package nz.anameg.jdbchelper;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

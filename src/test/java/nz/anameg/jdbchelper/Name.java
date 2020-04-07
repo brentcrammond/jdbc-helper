@@ -1,7 +1,7 @@
 /*
  * Copyright 2020 Anameg Consulting Ltd
  */
-package nz.h4t.jdbchelper;
+package nz.anameg.jdbchelper;
 
 import lombok.Builder;
 import lombok.Data;

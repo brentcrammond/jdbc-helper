@@ -1,7 +1,7 @@
 /*
  * Copyright 2020 Anameg Consulting Ltd
  */
-package nz.h4t.jdbchelper;
+package nz.anameg.jdbchelper;
 
 public class JDBCHelperException extends RuntimeException {
     public JDBCHelperException() {
