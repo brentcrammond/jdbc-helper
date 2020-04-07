@@ -1,5 +1,7 @@
 # jdbc-helper
-Designed as simple alternative to Spring JDBCTemplate, must be run under JDK 11 or above.
+Designed as simple alternative to Spring JDBCTemplate, must be run under JDK 11 or above.  
+
+It will work with any JDBC Driver and uses a DataSource.
 
 Example Code, based off the Unit Test:
 
