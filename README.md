@@ -1,5 +1,5 @@
 # jdbc-helper
-Designed as simple alternative to Spring JDBCTemplate, must be run under JDK 11 or above.  
+Designed as simple alternative to Spring JDBCTemplate, must be run under JDK 11 or above. It was created so that I could move some projects from Spring Boot to Quarkus.  
 
 It will work with any JDBC Driver and uses a DataSource.
 
