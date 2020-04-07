@@ -48,3 +48,5 @@ Example Code, based off the Unit Test:
                 assertEquals("Name 5", n.getName());
                 assertEquals(1000, n.getSeq());
             });
+
+Copyright Anameg Consulting Ltd 2020
