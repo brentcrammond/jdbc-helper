@@ -15,10 +15,10 @@ import java.util.Optional;
 /**
  * Simple replacement for JDBCTemplate without the reliance on Spring Framework.
  */
-public class JDBCHelper {
+public class JdbcHelper {
     private final DataSource ds;
 
-    public JDBCHelper(DataSource ds) {
+    public JdbcHelper(DataSource ds) {
         this.ds = ds;
     }
 
@@ -37,7 +37,7 @@ public class JDBCHelper {
                 }
             }
         } catch (SQLException e) {
-            throw new JDBCHelperException(e);
+            throw new JdbcHelperException(e);
         }
         return lst;
     }
@@ -56,7 +56,7 @@ public class JDBCHelper {
                 }
             }
         } catch (SQLException e) {
-            throw new JDBCHelperException(e);
+            throw new JdbcHelperException(e);
         }
         return Optional.empty();
     }
@@ -71,7 +71,7 @@ public class JDBCHelper {
                 }
             }
         } catch (SQLException e) {
-            throw new JDBCHelperException(e);
+            throw new JdbcHelperException(e);
         }
     }
 
@@ -81,7 +81,7 @@ public class JDBCHelper {
                 return ps.executeUpdate();
             }
         } catch (SQLException e) {
-            throw new JDBCHelperException(e);
+            throw new JdbcHelperException(e);
         }
     }
 

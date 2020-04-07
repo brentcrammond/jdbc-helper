@@ -5,7 +5,7 @@
 
     <groupId>nz.anameg</groupId>
     <artifactId>jdbc-helper</artifactId>
-    <version>0.9.1</version>
+    <version>0.9.2</version>
     <packaging>jar</packaging>
 
     <name>jdbc-helper</name>
@@ -22,25 +22,25 @@
 
         <!-- Lombok -->
 
-	    <dependency>
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.2</version>
             <scope>provided</scope>
         </dependency>
 
-	    <!-- Logging -->
+        <!-- Logging -->
 
-	    <dependency>
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.26</version>
             <scope>test</scope>
         </dependency>
 
-	    <!-- Unit Testing -->
+        <!-- Unit Testing -->
 
-	    <dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
