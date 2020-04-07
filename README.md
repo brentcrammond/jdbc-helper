@@ -1,5 +1,5 @@
 # jdbc-helper
-Designed as simple alternative to Spring JDBCTemplate.
+Designed as simple alternative to Spring JDBCTemplate, must be run under JDK 11 or above.
 
 Example Code, based off the Unit Test:
 
