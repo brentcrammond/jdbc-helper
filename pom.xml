@@ -5,17 +5,46 @@
 
     <groupId>nz.anameg</groupId>
     <artifactId>jdbc-helper</artifactId>
-    <version>0.9.3</version>
+    <version>0.9.4</version>
+
     <packaging>jar</packaging>
 
-    <name>jdbc-helper</name>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>jdbc-helper provides a set of utilities that are similar to Spring JDBCTemplete, but without the dependency on Spring.</description>
+
+    <url>https://github.com/brentcrammond/jdbc-helper</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Brent Crammond</name>
+            <email>brent@anameg.co.nz</email>
+            <organization>Anameg Consulting Ltd</organization>
+            <organizationUrl>https://www.anameg.co.nz</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/brentcrammond/jdbc-helper.git</connection>
+        <developerConnection>scm:git:ssh://github.com:brentcrammond/jdbc-helper.git</developerConnection>
+        <url>https://github.com/brentcrammond/jdbc-helper/tree/master</url>
+    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+
+        <lombok.version>1.18.2</lombok.version>
+        <slf4j.version>1.7.26</slf4j.version>
+        <h2.version>1.4.200</h2.version>
         <junit.version>5.6.1</junit.version>
-        <testcontainers.version>1.13.0</testcontainers.version>
     </properties>
 
     <dependencies>
@@ -25,7 +54,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.2</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
@@ -34,7 +63,7 @@
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
-            <version>1.7.26</version>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -61,10 +90,21 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>1.4.200</version>
+            <version>${h2.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!--<distributionManagement>-->
+    <!--    <snapshotRepository>-->
+    <!--        <id>ossrh</id>-->
+    <!--        <url>https://oss.sonatype.org/content/repositories/snapshots</url>-->
+    <!--    </snapshotRepository>-->
+    <!--    <repository>-->
+    <!--        <id>ossrh</id>-->
+    <!--        <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>-->
+    <!--    </repository>-->
+    <!--</distributionManagement>-->
 
     <build>
         <defaultGoal>clean package install</defaultGoal>
@@ -77,6 +117,43 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                 </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.1.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.2.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -94,6 +171,34 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--<plugin>-->
+            <!--    <groupId>org.apache.maven.plugins</groupId>-->
+            <!--    <artifactId>maven-gpg-plugin</artifactId>-->
+            <!--    <version>1.6</version>-->
+            <!--    <executions>-->
+            <!--        <execution>-->
+            <!--            <id>sign-artifacts</id>-->
+            <!--            <phase>verify</phase>-->
+            <!--            <goals>-->
+            <!--                <goal>sign</goal>-->
+            <!--            </goals>-->
+            <!--        </execution>-->
+            <!--    </executions>-->
+            <!--</plugin>-->
+
+            <!--<plugin>-->
+            <!--    <groupId>org.sonatype.plugins</groupId>-->
+            <!--    <artifactId>nexus-staging-maven-plugin</artifactId>-->
+            <!--    <version>1.6.8</version>-->
+            <!--    <extensions>true</extensions>-->
+            <!--    <configuration>-->
+            <!--        <serverId>ossrh</serverId>-->
+            <!--        <nexusUrl>https://oss.sonatype.org/</nexusUrl>-->
+            <!--        <autoReleaseAfterClose>false</autoReleaseAfterClose>-->
+            <!--    </configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
+
 </project>
